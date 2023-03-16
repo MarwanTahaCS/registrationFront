@@ -29,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <div class="bg-light">
+    <div class="bg-light ">
       <Header />
       {/* <Form onsubmit={saveData} /> */}
       <Form2 onsubmit={saveData} />
