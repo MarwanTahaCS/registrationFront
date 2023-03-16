@@ -53,8 +53,8 @@ export default function Assistants(props) {
       <p className="form-label">Assistants</p>
       {arrayRange(1, assistants.length, 1).map((assistant, index) => {
         return (
-          <ul class="list-group ">
-            <li key={index} class="d-flex justify-content-between lh-sm">
+          <ul className="list-group ">
+            <li key={index} className="d-flex justify-content-between lh-sm">
               <div className="input-group mb-1">
                 <input
                   className="form-control bg-light"
@@ -75,8 +75,8 @@ export default function Assistants(props) {
                   value={assistants[index].phoneNumber}
                 />
               </div>
-              {/* <div class="mb-3 px-3">
-                            <button class="btn btn-danger" onClick={() => remove(index)}>Delete</button>
+              {/* <div className="mb-3 px-3">
+                            <button className="btn btn-danger" onClick={() => remove(index)}>Delete</button>
                         </div> */}
               <i
                 className="material-icons"
@@ -89,8 +89,8 @@ export default function Assistants(props) {
           </ul>
         );
       })}
-      <div class="">
-        <button class="btn btn-primary btn-sm" onClick={() => addAssistant()}>
+      <div className="">
+        <button className="btn btn-primary btn-sm" onClick={() => addAssistant()}>
           {" "}
           Add Assistant
         </button>

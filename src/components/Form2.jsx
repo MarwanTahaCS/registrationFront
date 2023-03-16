@@ -219,8 +219,8 @@ export default function Form2(props) {
         <h5 className="p-3">
           Organization Details <span className="text-danger">*</span>
         </h5>
-        <div class="input-group px-3 pb-3">
-          <span class="input-group-text" id="basic-addon1">
+        <div className="input-group px-3 pb-3">
+          <span className="input-group-text" id="basic-addon1">
             Organization Name
           </span>
           <input
@@ -235,16 +235,16 @@ export default function Form2(props) {
           />
         </div>
         <div className="px-3 pb-3">
-          <div class="form-check">
+          <div className="form-check">
             <input
               name="degitalPaymentServices"
               onChange={digitalPaymentStatus}
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               value=""
               id="degitalPaymentServices"
             />
-            <label class="form-check-label" for="degitalPaymentServices">
+            <label className="form-check-label" for="degitalPaymentServices">
               I am interested in using Varno's digital payment service
             </label>
           </div>
@@ -329,7 +329,7 @@ export default function Form2(props) {
                             className="input-group-text  "
                             id="basic-addon1"
                           >
-                            Press on the active days of week
+                            Press on the active week days
                           </span>
                         </div>
                         <div className="col-12 ">
@@ -407,19 +407,19 @@ export default function Form2(props) {
                     <div className="list-group-item  justify-content-between lh-sm text-center">
                       <div className="row">
                         <div className="col col-12 col-sm-6 col-md-4 col-xl-3">
-                          <span class="input-group-text">
+                          <span className="input-group-text">
                             Fill in work day hours
                           </span>
                         </div>
                         <div className="col col-12 col-sm-6 col-md-8 col-xl-9">
-                          <div class="input-group">
+                          <div className="input-group">
                             <input
                               type="text"
                               name={`${index}`}
                               value={note.classes.classes[index].startOfDay}
                               onChange={updateStartOfWorkDay}
                               placeholder="Start of work day"
-                              class="form-control"
+                              className="form-control"
                             />
                             <input
                               type="text"
@@ -427,24 +427,24 @@ export default function Form2(props) {
                               value={note.classes.classes[index].endOfDay}
                               onChange={updateEndOfWorkDay}
                               placeholder="End of work day"
-                              class="form-control"
+                              className="form-control"
                             />
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="list-group-item  col">
-                      <div class="form-check">
+                      <div className="form-check">
                         <input
                           name={`${index}`}
                           onChange={longDayStatus}
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id={"defaultCheck1" + `${index}`}
                         />
                         <label
-                          class="form-check-label"
+                          className="form-check-label"
                           for={"defaultCheck1" + `${index}`}
                         >
                           {note.classes.classes[index].className === ""
@@ -453,7 +453,7 @@ export default function Form2(props) {
                           has long day hours
                         </label>
                       </div>
-                      <div class="row">
+                      <div className="row">
                         {note.classes.classes[index].longDay.isLongDay && (
                           <LongDay
                             updateLongDay={(longDayData) =>

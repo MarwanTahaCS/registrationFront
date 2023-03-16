@@ -54,10 +54,10 @@ export default function Teachers(props) {
       <p className="form-label">Teachers</p>
       {arrayRange(1, teachers.length, 1).map((teacher, index) => {
         return (
-          <ul class="list-group">
-            <li key={index} class="d-flex justify-content-between lh-sm">
+          <ul className="list-group">
+            <li key={index} className="d-flex justify-content-between lh-sm">
               <div className="input-group mb-1">
-                {/* <span class="input-group-text" id="basic-addon1">{index}</span> */}
+                {/* <span className="input-group-text" id="basic-addon1">{index}</span> */}
                 <input
                   className="form-control bg-light"
                   onChange={updateTeacherName}
@@ -78,8 +78,8 @@ export default function Teachers(props) {
                 />
               </div>
 
-              {/* <div class="input-group mb-3 px-3">
-                            <span class="input-group-text" id="basic-addon1">Phone N.</span>
+              {/* <div className="input-group mb-3 px-3">
+                            <span className="input-group-text" id="basic-addon1">Phone N.</span>
                             <input
                                 className="form-control bg-light"
                                 onChange={updateTeacherPhonenumber}
@@ -90,8 +90,8 @@ export default function Teachers(props) {
                                 value={teachers[index].phoneNumber}
                             />
                         </div> */}
-              <div class="">
-                {/* <button class="btn btn-danger btn-sm" onClick={() => remove(index)}>
+              <div className="">
+                {/* <button className="btn btn-danger btn-sm" onClick={() => remove(index)}>
                   Delete
                 </button> */}
                 <i className="material-icons" onClick={() => remove(index)} style={{color: "red", fontSize:"36px"}}>delete</i>
@@ -100,8 +100,8 @@ export default function Teachers(props) {
           </ul>
         );
       })}
-      <div class="">
-        <button class="btn btn-primary btn-sm" onClick={() => addTeacher()}>
+      <div className="">
+        <button className="btn btn-primary btn-sm" onClick={() => addTeacher()}>
           {" "}
           Add Teacher
         </button>

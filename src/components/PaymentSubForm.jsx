@@ -21,8 +21,8 @@ export default function PaymentSubForm(props) {
 
   return (
     <div className=" py-3">
-      <div class="input-group pb-3">
-        <span class="input-group-text">
+      <div className="input-group pb-3">
+        <span className="input-group-text">
           Account Number
         </span>
         <input
@@ -31,11 +31,11 @@ export default function PaymentSubForm(props) {
           value={paymentData.accountNumber}
           onChange={updatePaymentData}
           placeholder="Account Number"
-          class="form-control"
+          className="form-control"
         />
       </div>
-      <div class="input-group pb-3">
-        <span class="input-group-text">
+      <div className="input-group pb-3">
+        <span className="input-group-text">
           Branch ID
         </span>
         <input
@@ -44,11 +44,11 @@ export default function PaymentSubForm(props) {
           value={paymentData.branchID}
           onChange={updatePaymentData}
           placeholder="Bank Branch Number"
-          class="form-control"
+          className="form-control"
         />
       </div>
-      <div class="input-group">
-        <span class="input-group-text">
+      <div className="input-group">
+        <span className="input-group-text">
           Bank Name
         </span>
         <input
@@ -57,7 +57,7 @@ export default function PaymentSubForm(props) {
           value={paymentData.bankName}
           onChange={updatePaymentData}
           placeholder="Bank Name"
-          class="form-control"
+          className="form-control"
         />
       </div>
     </div>

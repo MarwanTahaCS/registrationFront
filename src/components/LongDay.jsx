@@ -59,17 +59,17 @@ export default function LongDay(props) {
       <div className="list-group-item  justify-content-between lh-sm text-center">
         <div className="row">
           <div className="col col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
-            <span class="input-group-text">Fill in extra work hours</span>
+            <span className="input-group-text">Fill in extra work hours</span>
           </div>
           <div className="col col-12 col-sm-4 col-md-6 col-lg-7 col-xl-8 col-xxl-9">
-            <div class="input-group">
+            <div className="input-group">
               <input
                 type="text"
                 name={"startOfLongDayHours"}
                 value={longDayData.startOfLongDayHours}
                 onChange={updateLongWorkDayHours}
                 placeholder="Start of work day"
-                class="form-control"
+                className="form-control"
               />
               <input
                 type="text"
@@ -77,7 +77,7 @@ export default function LongDay(props) {
                 value={longDayData.endOfLongDayHours}
                 onChange={updateLongWorkDayHours}
                 placeholder="End of work day"
-                class="form-control"
+                className="form-control"
               />
             </div>
           </div>
