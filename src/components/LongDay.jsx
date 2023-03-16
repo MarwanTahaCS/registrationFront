@@ -37,13 +37,13 @@ export default function LongDay(props) {
     props.updateLongDay(longDayData);
   }
 
-  function updateLongWorkDayHours(event){
+  function updateLongWorkDayHours(event) {
     const { value, name } = event.target;
-    setLongDayData((prevValue)=>{
-        return {
-            ...prevValue,
-            [name]: value
-        }
+    setLongDayData((prevValue) => {
+      return {
+        ...prevValue,
+        [name]: value,
+      };
     });
     props.updateLongDay(longDayData);
   }
@@ -56,25 +56,31 @@ export default function LongDay(props) {
       <div className="list-group-item d-flex justify-content-between lh-sm">
         <Assistants updateAssistants={updateAssistants} />
       </div>
-      <div className="list-group-item d-flex justify-content-between lh-sm text-center">
-        <div class="input-group">
-          <span class="input-group-text">Start and End of work day</span>
-          <input
-            type="text"
-            name={"startOfLongDayHours"}
-            value={longDayData.startOfLongDayHours}
-            onChange={updateLongWorkDayHours}
-            placeholder="Start of work day"
-            class="form-control"
-          />
-          <input
-            type="text"
-            name="endOfLongDayHours"
-            value={longDayData.endOfLongDayHours}
-            onChange={updateLongWorkDayHours}
-            placeholder="End of work day"
-            class="form-control"
-          />
+      <div className="list-group-item  justify-content-between lh-sm text-center">
+        <div className="row">
+          <div className="col col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
+            <span class="input-group-text">Start and End of extra work hours</span>
+          </div>
+          <div className="col col-12 col-sm-4 col-md-6 col-lg-7 col-xl-8 col-xxl-9">
+            <div class="input-group">
+              <input
+                type="text"
+                name={"startOfLongDayHours"}
+                value={longDayData.startOfLongDayHours}
+                onChange={updateLongWorkDayHours}
+                placeholder="Start of work day"
+                class="form-control"
+              />
+              <input
+                type="text"
+                name="endOfLongDayHours"
+                value={longDayData.endOfLongDayHours}
+                onChange={updateLongWorkDayHours}
+                placeholder="End of work day"
+                class="form-control"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

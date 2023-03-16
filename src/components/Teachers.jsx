@@ -101,7 +101,7 @@ export default function Teachers(props) {
         );
       })}
       <div class="">
-        <button class="btn btn-primary" onClick={() => addTeacher()}>
+        <button class="btn btn-primary btn-sm" onClick={() => addTeacher()}>
           {" "}
           Add Teacher
         </button>

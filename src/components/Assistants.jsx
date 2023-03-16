@@ -90,7 +90,7 @@ export default function Assistants(props) {
         );
       })}
       <div class="">
-        <button class="btn btn-primary" onClick={() => addAssistant()}>
+        <button class="btn btn-primary btn-sm" onClick={() => addAssistant()}>
           {" "}
           Add Assistant
         </button>

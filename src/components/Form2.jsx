@@ -200,7 +200,7 @@ export default function Form2(props) {
                         Class Name
                       </span>
                       <input
-                        className="form-control form-control-lg"
+                        className="form-control"
                         onChange={updateClassName}
                         type="text"
                         name={`${index}`}
@@ -228,108 +228,115 @@ export default function Form2(props) {
 
                   <div className="list-group-item  text-center">
                     <div className="row g-1 g-md-2">
-                      <div className="col-12 col-md-6">
-                        <span className="input-group-text" id="basic-addon1">
-                          Press on the active days of the week
+                      <div className="col-12 ">
+                        <span
+                          className="input-group-text  "
+                          id="basic-addon1"
+                        >
+                          Press on the active days of week
                         </span>
                       </div>
-                      <div className="col-12 col-md-6">
-                        <div className="input-group input-group mb-3 d-flex justify-content-center">
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 0, index);
-                            }}
-                            type="button"
-                          >
-                            Sunday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 1, index);
-                            }}
-                            type="button"
-                          >
-                            Monday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 2, index);
-                            }}
-                            type="button"
-                          >
-                            Tuesday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 3, index);
-                            }}
-                            type="button"
-                          >
-                            Wednesday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 4, index);
-                            }}
-                            type="button"
-                          >
-                            Thursday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 5, index);
-                            }}
-                            type="button"
-                          >
-                            Friday
-                          </button>
-                          <button
-                            className="btn"
-                            onClick={(e) => {
-                              handleClick(e, 6, index);
-                            }}
-                            type="button"
-                          >
-                            Saturday
-                          </button>
+                      <div className="col-12 ">
+                        <div className="d-flex ">
+                          <div className="row px-md-3">
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 0, index);
+                              }}
+                              type="button"
+                            >
+                              Sunday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 1, index);
+                              }}
+                              type="button"
+                            >
+                              Monday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 2, index);
+                              }}
+                              type="button"
+                            >
+                              Tuesday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 3, index);
+                              }}
+                              type="button"
+                            >
+                              Wednesday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 4, index);
+                              }}
+                              type="button"
+                            >
+                              Thursday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 5, index);
+                              }}
+                              type="button"
+                            >
+                              Friday
+                            </button>
+                            <button
+                              className="btn btn-sm col"
+                              onClick={(e) => {
+                                handleClick(e, 6, index);
+                              }}
+                              type="button"
+                            >
+                              Saturday
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-
-
                   </div>
 
-                  <div className="list-group-item d-flex justify-content-between lh-sm text-center">
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        Start and End of work day
+                  <div className="list-group-item  justify-content-between lh-sm text-center">
+                    <div className="row">
+                      <div className="col col-12 col-sm-6 col-md-4 col-xl-3">
+                        <span class="input-group-text">
+                          Start and End of work day
+                        </span>
                       </div>
-                      <input
-                        type="text"
-                        name={`${index}`}
-                        value={note.classes.classes[index].startOfDay}
-                        onChange={updateStartOfWorkDay}
-                        placeholder="Start of work day"
-                        class="form-control"
-                      />
-                      <input
-                        type="text"
-                        name={`${index}`}
-                        value={note.classes.classes[index].endOfDay}
-                        onChange={updateEndOfWorkDay}
-                        placeholder="End of work day"
-                        class="form-control"
-                      />
+                      <div className="col col-12 col-sm-6 col-md-8 col-xl-9">
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            name={`${index}`}
+                            value={note.classes.classes[index].startOfDay}
+                            onChange={updateStartOfWorkDay}
+                            placeholder="Start of work day"
+                            class="form-control"
+                          />
+                          <input
+                            type="text"
+                            name={`${index}`}
+                            value={note.classes.classes[index].endOfDay}
+                            onChange={updateEndOfWorkDay}
+                            placeholder="End of work day"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
-
                   <div className="list-group-item  col">
                     <div class="form-check">
                       <input
