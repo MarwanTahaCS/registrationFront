@@ -1,101 +1,82 @@
-// import React from "react";
-// import AddIcon from "@material-ui/icons/Add";
-// import { useState } from "react";
-// import Fab from "@material-ui/core/Fab";
-// import { Zoom } from "@material-ui/core";
-// import Delete from "@material-ui/icons/Delete";
+import React from "react";
+import { useState } from "react";
+import Assistants from "./Assistants";
+import Teachers from "./Teachers";
 
-// export default function LongDay(props) {
-//     const [longDayData, setLongDayData] = useState([
-//         {
-//             staff: [],
-//             startOfLongDayHours: "15:30",
-//             endOfLongDayHours: "18:00",
-//         }
-//     ]);
+export default function LongDay(props) {
+  const [longDayData, setLongDayData] = useState({
+    staff: {
+      teachers: [],
+      assistants: [],
+    },
+    startOfLongDayHours: "13:30",
+    endOfLongDayHours: "15:00",
+  });
 
-//     function updateAssistantName(event) {
-//         const { value, name } = event.target;
-//         let data = [...longDayData];
-//         data[name].name = value;
-//         // props.setNote();
-//         setAssistants(data);
-//         props.updateLongDay(assistants);
-//     }
-//     function updateAssistantPhonenumber(event) {
-//         const { value, name } = event.target;
-//         let data = [...longDayData];
-//         data[name].phoneNumber = value;
-//         // props.setNote();
-//         setAssistants(data);
-//         props.updateLongDay(assistants);
-//     }
-//     const arrayRange = (start, stop, step) =>
-//         Array.from(
-//             { length: (stop - start) / step + 1 },
-//             (value, index) => start + index * step
-//         );
+  function updateTeachers(teachers) {
+    let newTeachers = longDayData.staff;
+    newTeachers.teachers = [...teachers];
+    setLongDayData((prevValue) => {
+      return {
+        ...prevValue,
+        ["staff"]: newTeachers,
+      };
+    });
+    props.updateLongDay(longDayData);
+  }
 
-//     function addAssistant() {
-//         setAssistants([...longDayData, {
-//             name: "",
-//             phoneNumber: "",
-//         }]);
-//         props.updateLongDay(assistants);
-//     }
-//     function remove(index) {
-//         let data = [...longDayData];
-//         data.splice(index, 1);
-//         setAssistants(data);
-//         props.updateLongDay(assistants);
-//     }
+  function updateAssistants(assistants) {
+    let newAssistants = longDayData.staff;
+    newAssistants.assistants = [...assistants];
+    setLongDayData((prevValue) => {
+      return {
+        ...prevValue,
+        ["staff"]: newAssistants,
+      };
+    });
+    props.updateLongDay(longDayData);
+  }
 
-//     return (
-//         <div className="container">
-//             <p className="form-label">Assistants</p>
-//             {arrayRange(1, assistants.length, 1).map((assistant, index) => {
-//                 return <ul class="list-group mb-3">
-//                     <li key={index} class="d-flex justify-content-between lh-sm">
-//                         <div class="input-group mb-3">
-//                             <span class="input-group-text" id="basic-addon1">Name</span><input
-//                                 className="form-control bg-light"
-//                                 onChange={updateAssistantName}
-//                                 type="text"
-//                                 name={index}
-//                                 placeholder={"Assistant name " + `${index + 1}`}
-//                                 autoComplete="off"
-//                                 value={assistants[index].name}
-//                             /></div>
-//                         <div class=""></div>
-//                         <div class="input-group mb-3 px-3">
-//                             <span class="input-group-text" id="basic-addon1">Phone N.</span>
-//                             <input
-//                                 className="form-control bg-light"
-//                                 onChange={updateAssistantPhonenumber}
-//                                 type="text"
-//                                 name={index}
-//                                 placeholder={"Assistant Phone number " + `${index + 1}`}
-//                                 autoComplete="off"
-//                                 value={assistants[index].phoneNumber}
-//                             />
-//                         </div>
-//                         <div class="mb-3 px-3">
-//                             <Zoom in={true}>
-//                                 <Fab onClick={() => remove(index)}>
-//                                     <Delete />
-//                                 </Fab>
-//                             </Zoom>
-//                         </div>
-//                     </li>
-//                 </ul>;
-//             })}
-//             <div class="">
-//                 <Zoom in={true}>
-//                     <Fab onClick={() => addAssistant()}>
-//                         <AddIcon />
-//                     </Fab>
-//                 </Zoom>
-//             </div>
-//         </div>
-//     );
-// }
+  function updateLongWorkDayHours(event){
+    const { value, name } = event.target;
+    setLongDayData((prevValue)=>{
+        return {
+            ...prevValue,
+            [name]: value
+        }
+    });
+    props.updateLongDay(longDayData);
+  }
+
+  return (
+    <div className="container list-group p-3">
+      <div className="list-group-item d-flex justify-content-between lh-sm">
+        <Teachers updateTeachers={updateTeachers} />
+      </div>
+      <div className="list-group-item d-flex justify-content-between lh-sm">
+        <Assistants updateAssistants={updateAssistants} />
+      </div>
+      <div className="list-group-item d-flex justify-content-between lh-sm text-center">
+        <div class="input-group">
+          <span class="input-group-text">Start and End of work day</span>
+          <input
+            type="text"
+            name={"startOfLongDayHours"}
+            value={longDayData.startOfLongDayHours}
+            onChange={updateLongWorkDayHours}
+            placeholder="Start of work day"
+            class="form-control"
+          />
+          <input
+            type="text"
+            name="endOfLongDayHours"
+            value={longDayData.endOfLongDayHours}
+            onChange={updateLongWorkDayHours}
+            placeholder="End of work day"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
