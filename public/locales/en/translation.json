@@ -1,0 +1,55 @@
+{
+    "Thanks": {
+        "1": "Thank you"
+    },
+    "Why": {
+        "1": "For choosing to translate"
+    },
+    "Intro": {
+        "1": "Registration Form",
+        "2": "Please fill in you organization's information below so we can start preparing your workspace at Varno",
+        "3": "Required"
+    },
+    "OrgDetails": {
+        "1": "Organization Details",
+        "2": "Organization Name",
+        "3": "Please enter your organization name",
+        "4": "I am interested in using Varno's digital payment service"
+    },
+    "Classes": {
+        "1": "Classes",
+        "2": "Class Number",
+        "3": "Class Name",
+        "4": "Enter class name",
+        "5": "Class Location",
+        "6": "Enter class location",
+        "7": "Teachers",
+        "8": "Full Name",
+        "9": "Phone N.",
+        "10": "Add Teacher",
+        "11": "Assistant",
+        "12": "Add Assistant",
+        "13": "Press on the active week days",
+        "14": "Sunday",
+        "15": "Monday",
+        "16": "Tuesday",
+        "17": "Wednesday",
+        "18": "Thursday",
+        "19": "Friday",
+        "20": "Saturday",
+        "21": "Fill in work day hours",
+        "22": "Fill in extra work hours",
+        "23": "This class",
+        "24": "has long day hours",
+        "25": "Add Class"
+    },
+    "PaymentDetails": {
+        "1": "Payment Details",
+        "2": "Account Number",
+        "3": "Please enter the organization's account number",
+        "4": "Branch ID",
+        "5": "Please enter the organization's bank branch number",
+        "6": "Bank Name",
+        "7": "Please enter the organization's Bank Name"
+    }
+}

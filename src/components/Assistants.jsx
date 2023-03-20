@@ -50,18 +50,18 @@ export default function Assistants(props) {
 
   return (
     <div className="container p-0">
-      <p className="form-label">Assistants</p>
+      <p className="form-label"><strong>{props.t('Classes.11')}</strong></p>
       {arrayRange(1, assistants.length, 1).map((assistant, index) => {
         return (
-          <ul className="list-group ">
+          <ul className="list-group px-0">
             <li key={index} className="d-flex justify-content-between lh-sm">
-              <div className="input-group mb-1">
+              <div className="input-group mb-1" dir="ltr">
                 <input
                   className="form-control bg-light"
                   onChange={updateAssistantName}
                   type="text"
                   name={index}
-                  placeholder={"Full Name"}
+                  placeholder={props.t('Classes.8')}
                   autoComplete="off"
                   value={assistants[index].name}
                 />
@@ -70,7 +70,7 @@ export default function Assistants(props) {
                   onChange={updateAssistantPhonenumber}
                   type="text"
                   name={index}
-                  placeholder={"Phone N. "}
+                  placeholder={props.t('Classes.9')}
                   autoComplete="off"
                   value={assistants[index].phoneNumber}
                 />
@@ -91,8 +91,7 @@ export default function Assistants(props) {
       })}
       <div className="">
         <button className="btn btn-primary btn-sm" onClick={() => addAssistant()}>
-          {" "}
-          Add Assistant
+        {props.t('Classes.12')}
         </button>
       </div>
     </div>

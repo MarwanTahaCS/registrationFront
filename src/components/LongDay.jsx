@@ -51,18 +51,18 @@ export default function LongDay(props) {
   return (
     <div className="container list-group p-3">
       <div className="list-group-item d-flex justify-content-between lh-sm">
-        <Teachers updateTeachers={updateTeachers} />
+        <Teachers updateTeachers={updateTeachers} t={props.t}/>
       </div>
       <div className="list-group-item d-flex justify-content-between lh-sm">
-        <Assistants updateAssistants={updateAssistants} />
+        <Assistants updateAssistants={updateAssistants} t={props.t}/>
       </div>
       <div className="list-group-item  justify-content-between lh-sm text-center">
         <div className="row">
           <div className="col col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
-            <span className="input-group-text">Fill in extra work hours</span>
+            <span className="input-group-text">{props.t('Classes.22')}</span>
           </div>
           <div className="col col-12 col-sm-4 col-md-6 col-lg-7 col-xl-8 col-xxl-9">
-            <div className="input-group">
+            <div className="input-group" dir="ltr">
               <input
                 type="text"
                 name={"startOfLongDayHours"}

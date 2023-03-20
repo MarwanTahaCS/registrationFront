@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import Header from "./Header";
 import Axios from "axios";
 import Note from "./Note";
 import Form from "./Form";
 import Form2 from "./Form2";
 
-export default function App() {
+export default function App(props) {
+
+  const { t, i18n } = useTranslation();
+  document.body.dir = i18n.dir();
+  
+  function handleClick(language){
+    i18n.changeLanguage(language);
+    document.body.lang = language;
+    document.body.dir = i18n.dir();
+  }
+
+
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.get("https://notekeep-backend.onrender.com/api/notes")
@@ -29,10 +41,11 @@ export default function App() {
   }
 
   return (
-    <div className="bg-light ">
-      <Header />
+    <div className="bg-light">
+      <Header switchLanguage={handleClick} />
+
       {/* <Form onsubmit={saveData} /> */}
-      <Form2 onsubmit={saveData} />
+      <Form2 t={t} onsubmit={saveData} />
       {/* {data.map((item, index) => {
         return (
           <Note

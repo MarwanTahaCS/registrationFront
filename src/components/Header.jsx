@@ -1,9 +1,63 @@
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
+  // const { t, i18n } = useTranslation();
+
+  // function handleClick(language){
+  //   i18n.changeLanguage(language);
+  // }
+
   return (
     <header>
-      {/* <h1>Varno Registration</h1> */}
+      <div className="container mt-3 mb-0" dir="ltr">
+        <div className="card m-3">
+          <div class="btn-group m-4" role="group" aria-label="Basic example">
+          <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    props.switchLanguage("en");
+                  }}
+                >
+                  English
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    props.switchLanguage("he");
+                  }}
+                >
+                  עברית
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    props.switchLanguage("ar");
+                  }}
+                >
+                  العربية
+                </button>
+          </div>
+          <div class="container text-center">
+            <div class="row row-cols-auto">
+              <div class="col">
+                
+              </div>
+              <div class="col">
+                
+              </div>
+              <div class="col">
+                
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
     </header>
   );
 }
