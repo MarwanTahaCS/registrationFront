@@ -8,80 +8,7 @@ import LongDay from "./LongDay";
 import PaymentSubForm from "./PaymentSubForm";
 
 export default function Form2(props) {
-  const [note, setNote] = useState({
-    orgDetails: {
-      organizationName: "",
-      orgLogo: "",
-      staff: [
-        {
-          position: "manager",
-          name: "",
-          phoneNumber: "",
-          email: ""
-        },
-        {
-          position: "secretary",
-          name: "",
-          phoneNumber: "",
-          email: ""
-        },
-        {
-          position: "security manager",
-          name: "",
-          phoneNumber: "",
-          email: ""
-        }
-      ],
-    },
-    organizationName: "",
-    digitalPayment: {
-      iswanted: false,
-      details: {
-        accountNumber: "",
-        branchID: "",
-        bankName: "",
-      },
-    },
-    classes: {
-      numberOfClasses: 1,
-      classes: [{
-        className: "",
-        classLocation: "",
-        staff: {
-          teachers: [
-            {
-              name: "",
-              phoneNumber: "",
-            }
-          ],
-          assistants: [
-            {
-              name: "",
-              phoneNumber: "",
-            }
-          ],
-        },
-        workDays: [false, false, false, false, false, false, false],
-        startOfDay: "08:00",
-        endOfDay: "13:30",
-        longDay: {
-          isLongDay: false,
-          staff: {
-            teachers: [{
-              name: "",
-              phoneNumber: "",
-            }],
-            assistants: [{
-              name: "",
-              phoneNumber: "",
-            }],
-          },
-          startOfLongDayHours: "13:30",
-          endOfLongDayHours: "15:00",
-        },
-      }],
-    },
-  });
+  const [note, setNote] = useState(props.org);
 
   function updateOrgDetails(newOrgDetails) {
     setNote((prevValue) => {
@@ -199,6 +126,7 @@ export default function Form2(props) {
   }
 
   function submit() {
+    // props.onsubmit(note);
     console.log(note);
   }
 
@@ -262,7 +190,11 @@ export default function Form2(props) {
   function digitalPaymentStatus() {
     let form = note;
     form.digitalPayment.iswanted = form.digitalPayment.iswanted ? false : true;
-    setNote(form);
+    setNote(() => {
+      return {
+        ...form
+      };
+    });
   }
 
   return (
@@ -536,10 +468,9 @@ export default function Form2(props) {
             <h5 className="">
               {props.t('PaymentDetails.1')} <span className="text-danger">*</span>
             </h5>
-            <div>
-              {note.digitalPayment.iswanted && (
+            <div className="row">
                 <PaymentSubForm updatePaymentSubform={updatePaymentData} t={props.t} paymentDetails={note.digitalPayment.details}/>
-              )}
+             
             </div>
           </div>
         </div>
@@ -553,30 +484,3 @@ export default function Form2(props) {
     </div>
   );
 }
-
-//----------------------------------------------------------------------------
-/*{
-          className: "",
-          teachers: [
-            {
-              name: "",
-              phoneNumber: ""
-            }
-          ],
-          assistants: [
-            {
-              name: "",
-              phoneNumber: ""
-            }
-          ],
-          daysOfTeaching: {
-            sunday: true,
-            monday: true,
-            tuesday: true,
-            wednesday: true,
-            thursday: true,
-            friday: false,
-            saturday: false
-          },
-          attendanceHours: "8:00-15:00"
-        }*/
