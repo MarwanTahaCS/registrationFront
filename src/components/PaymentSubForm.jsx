@@ -2,11 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 export default function PaymentSubForm(props) {
-  const [paymentData, setPaymentData] = useState({
-    accountNumber: "",
-    branchID: "",
-    bankName: "",
-  });
+  const [paymentData, setPaymentData] = useState(props.paymentDetails);
 
   function updatePaymentData(event) {
     const { value, name } = event.target;

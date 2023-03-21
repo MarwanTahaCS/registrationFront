@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 export default function Assistants(props) {
-  const [assistants, setAssistants] = useState([
-    {
-      name: "",
-      phoneNumber: "",
-    },
-  ]);
+  const [assistants, setAssistants] = useState(props.assistants);
 
   function updateAssistantName(event) {
     const { value, name } = event.target;
@@ -15,7 +10,7 @@ export default function Assistants(props) {
     data[name].name = value;
     // props.setNote();
     setAssistants(data);
-    props.updateAssistants(assistants);
+    props.updateAssistants(data);
   }
   function updateAssistantPhonenumber(event) {
     const { value, name } = event.target;
@@ -23,7 +18,7 @@ export default function Assistants(props) {
     data[name].phoneNumber = value;
     // props.setNote();
     setAssistants(data);
-    props.updateAssistants(assistants);
+    props.updateAssistants(data);
   }
   const arrayRange = (start, stop, step) =>
     Array.from(
@@ -39,13 +34,19 @@ export default function Assistants(props) {
         phoneNumber: "",
       },
     ]);
-    props.updateAssistants(assistants);
+    props.updateAssistants([
+      ...assistants,
+      {
+        name: "",
+        phoneNumber: "",
+      },
+    ]);
   }
   function remove(index) {
     let data = [...assistants];
     data.splice(index, 1);
     setAssistants(data);
-    props.updateAssistants(assistants);
+    props.updateAssistants(data);
   }
 
   return (

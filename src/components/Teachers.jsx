@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 export default function Teachers(props) {
-  const [teachers, setTeachers] = useState([
-    {
-      name: "",
-      phoneNumber: "",
-    },
-  ]);
+  const [teachers, setTeachers] = useState(props.teachers);
 
   function updateTeacherName(event) {
     const { value, name } = event.target;
@@ -15,7 +10,7 @@ export default function Teachers(props) {
     data[name].name = value;
     // props.setNote();
     setTeachers(data);
-    props.updateTeachers(teachers);
+    props.updateTeachers(data);
   }
   function updateTeacherPhonenumber(event) {
     const { value, name } = event.target;
@@ -23,7 +18,7 @@ export default function Teachers(props) {
     data[name].phoneNumber = value;
     // props.setNote();
     setTeachers(data);
-    props.updateTeachers(teachers);
+    props.updateTeachers(data);
   }
   const arrayRange = (start, stop, step) =>
     Array.from(
@@ -39,14 +34,20 @@ export default function Teachers(props) {
         phoneNumber: "",
       },
     ]);
-    props.updateTeachers(teachers);
+    props.updateTeachers([
+      ...teachers,
+      {
+        name: "",
+        phoneNumber: "",
+      },
+    ]);
   }
   function remove(index) {
     let data = [...teachers];
     data.splice(index, 1);
     // props.setNote();
     setTeachers(data);
-    props.updateTeachers(teachers);
+    props.updateTeachers(data);
   }
 
   return (

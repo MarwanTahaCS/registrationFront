@@ -4,14 +4,7 @@ import Assistants from "./Assistants";
 import Teachers from "./Teachers";
 
 export default function LongDay(props) {
-  const [longDayData, setLongDayData] = useState({
-    staff: {
-      teachers: [],
-      assistants: [],
-    },
-    startOfLongDayHours: "13:30",
-    endOfLongDayHours: "15:00",
-  });
+  const [longDayData, setLongDayData] = useState(props.longDayDetails);
 
   function updateTeachers(teachers) {
     let newTeachers = longDayData.staff;
@@ -51,10 +44,10 @@ export default function LongDay(props) {
   return (
     <div className="container list-group p-3">
       <div className="list-group-item d-flex justify-content-between lh-sm">
-        <Teachers updateTeachers={updateTeachers} t={props.t}/>
+        <Teachers updateTeachers={updateTeachers} t={props.t} teachers={longDayData.staff.teachers} />
       </div>
       <div className="list-group-item d-flex justify-content-between lh-sm">
-        <Assistants updateAssistants={updateAssistants} t={props.t}/>
+        <Assistants updateAssistants={updateAssistants} t={props.t} assistants={longDayData.staff.assistants} />
       </div>
       <div className="list-group-item  justify-content-between lh-sm text-center">
         <div className="row">

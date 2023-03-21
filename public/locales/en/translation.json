@@ -14,7 +14,19 @@
         "1": "Organization Details",
         "2": "Organization Name",
         "3": "Please enter your organization name",
-        "4": "I am interested in using Varno's digital payment service"
+        "4": "I am interested in using Varno's digital payment service",
+        "5": "Choose an option",
+        "6": "Secretary",
+        "7": "Security Manager",
+        "8": "Other",
+        "9": "Full Name",
+        "10": "Phone N.",
+        "11": "Email",
+        "12": "Add Staff Member",
+        "13": "Staff",
+        "14": "Organization Logo",
+        "15": "Please choose your organization Logo",
+        "16": "Manager"
     },
     "Classes": {
         "1": "Classes",
