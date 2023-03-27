@@ -12,7 +12,10 @@ export default function PaymentSubForm(props) {
         [name]: value,
       };
     });
-    props.updatePaymentSubform(paymentData);
+    props.updatePaymentSubform({
+      ...paymentData,
+      [name]: value,
+    });
   }
 
   return (

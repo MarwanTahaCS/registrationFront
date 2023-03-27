@@ -11,7 +11,7 @@ export default function Header(props) {
     <header>
       <div className="container mt-3 mb-0" dir="ltr">
         <div className="card m-3">
-          <div class="btn-group m-4" role="group" aria-label="Basic example">
+          <div className="btn-group m-4" role="group" aria-label="Basic example">
           <button
                   type="button"
                   className="btn btn-outline-primary"
@@ -40,15 +40,15 @@ export default function Header(props) {
                   العربية
                 </button>
           </div>
-          <div class="container text-center">
-            <div class="row row-cols-auto">
-              <div class="col">
+          <div className="container text-center">
+            <div className="row row-cols-auto">
+              <div className="col">
                 
               </div>
-              <div class="col">
+              <div className="col">
                 
               </div>
-              <div class="col">
+              <div className="col">
                 
               </div>
             </div>

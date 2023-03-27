@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import OrgDetails from "./OrgDetails";
 import Teachers from "./Teachers";
@@ -14,7 +16,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["orgDetails"]: newOrgDetails,
+        orgDetails: newOrgDetails,
       };
     });
   }
@@ -25,7 +27,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -36,7 +38,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -52,23 +54,46 @@ export default function Form2(props) {
       className: "",
       classLocation: "",
       staff: {
-        teachers: [],
-        assistants: [],
+        teachers: [
+          {
+            name: "",
+            phoneNumber: "",
+          },
+        ],
+        assistants: [
+          {
+            name: "",
+            phoneNumber: "",
+          },
+        ],
       },
       workDays: [false, false, false, false, false, false, false],
       startOfDay: "08:00",
       endOfDay: "13:30",
       longDay: {
         isLongDay: false,
-        staff: [],
-        startOfLongDayHours: "15:30",
-        endOfLongDayHours: "18:00",
+        staff: {
+          teachers: [
+            {
+              name: "",
+              phoneNumber: "",
+            },
+          ],
+          assistants: [
+            {
+              name: "",
+              phoneNumber: "",
+            },
+          ],
+        },
+        startOfLongDayHours: "13:30",
+        endOfLongDayHours: "15:00",
       },
     });
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -79,7 +104,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: classes,
+        classes: classes,
       };
     });
   }
@@ -90,7 +115,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: classes,
+        classes: classes,
       };
     });
   }
@@ -99,14 +124,14 @@ export default function Form2(props) {
     let classes = note.classes;
     classes.classes[classIndex].longDay = {
       ...classes.classes[classIndex].longDay,
-      ["staff"]: longDayData.staff,
-      ["startOfLongDayHours"]: longDayData.startOfLongDayHours,
-      ["endOfLongDayHours"]: longDayData.endOfLongDayHours,
+      staff: longDayData.staff,
+      startOfLongDayHours: longDayData.startOfLongDayHours,
+      endOfLongDayHours: longDayData.endOfLongDayHours,
     };
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: classes,
+        classes: classes,
       };
     });
   }
@@ -115,19 +140,29 @@ export default function Form2(props) {
     let newForm = note.digitalPayment;
     newForm = {
       ...newForm,
-      ["details"]: paymentData,
+      details: paymentData,
     };
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["digitalPayment"]: newForm,
+        digitalPayment: newForm,
       };
     });
   }
 
   function submit() {
-    // props.onsubmit(note);
-    console.log(note);
+    props.onsubmit(note);
+    toast.success(props.t("Form.1"), {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    // console.log(note);
   }
 
   const handleClick = (event, day, classIndex) => {
@@ -145,7 +180,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: classes,
+        classes: classes,
       };
     });
   };
@@ -157,7 +192,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -168,7 +203,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -182,7 +217,7 @@ export default function Form2(props) {
     setNote((prevValue) => {
       return {
         ...prevValue,
-        ["classes"]: newClasses,
+        classes: newClasses,
       };
     });
   }
@@ -192,7 +227,7 @@ export default function Form2(props) {
     form.digitalPayment.iswanted = form.digitalPayment.iswanted ? false : true;
     setNote(() => {
       return {
-        ...form
+        ...form,
       };
     });
   }
@@ -201,38 +236,67 @@ export default function Form2(props) {
     <div className="container py-3">
       <div className="card m-3">
         <h2 className="pt-3 px-3">
-          <strong>{props.t('Intro.1')}</strong>
+          <strong>{props.t("Intro.1")}</strong>
         </h2>
-        <p className="px-4 mb-1">
-          {props.t('Intro.2')}
-        </p>
-        <p className="px-4 text-danger">* {props.t('Intro.3')}</p>
+        <p className="px-4 mb-1">{props.t("Intro.2")}</p>
+        <p className="px-4 mb-1">{props.t('Intro.4')}</p>
+        <p className="px-4 text-danger">* {props.t("Intro.3")}</p>
       </div>
 
-      <OrgDetails t={props.t} updateOrgDetails={updateOrgDetails} orgDetails={note.orgDetails} digitalPaymentStatus={digitalPaymentStatus} />
+      <div className="mb-3 p-3">
+        <button className="btn btn-primary" onClick={submit}>
+          {props.t("Form.2")}
+        </button>
+      </div>
+
+      <OrgDetails
+        t={props.t}
+        updateOrgDetails={(newOrgDetails) => {
+          updateOrgDetails(newOrgDetails);
+        }}
+        orgDetails={note.orgDetails}
+        digitalPaymentStatus={digitalPaymentStatus}
+      />
 
       <div className="card m-3">
         <div className="p-3">
           <h5 className="">
-            {props.t('Classes.1')} <span className="text-danger">*</span>
+            {props.t("Classes.1")} <span className="text-danger">*</span>
           </h5>
-          {note.numberOfClasses != 0 &&
+          {note.numberOfClasses !== 0 &&
             arrayRange(1, note.classes.numberOfClasses, 1).map(
               (currentValue, index) => {
                 return (
                   <ul className="list-group m-1 mx-0 px-0 my-4">
-
-
-
-                    <div class="accordion" id="accordionExample">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header bg-light" id="headingOne" dir="ltr">
-                          <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target={`#collapseOne${index}`} aria-expanded="true" aria-controls={`collapseOne${index}`}>
-                            <h6>{(note.classes.classes[index].className == "") ? (`${props.t('Classes.2')} ${index + 1}`) : note.classes.classes[index].className}</h6>
+                    <div className="accordion" id="accordionExample">
+                      <div className="accordion-item">
+                        <h2
+                          className="accordion-header bg-light"
+                          id="headingOne"
+                          dir="ltr"
+                        >
+                          <button
+                            className="accordion-button bg-light"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target={`#collapseOne${index}`}
+                            aria-expanded="true"
+                            aria-controls={`collapseOne${index}`}
+                          >
+                            <h6>
+                              {note.classes.classes[index].className === ""
+                                ? `${props.t("Classes.2")} ${index + 1}`
+                                : note.classes.classes[index].className}
+                            </h6>
                           </button>
                         </h2>
-                        <div id={`collapseOne${index}`} class="accordion-collapse collapse show" aria-labelledby={`headingOne${index}`} data-bs-parent={`#accordionExample${index}`}>
-                          <div class="accordion-body">
+                        <div
+                          id={`collapseOne${index}`}
+                          className="accordion-collapse collapse show"
+                          aria-labelledby={`headingOne${index}`}
+                          data-bs-parent={`#accordionExample${index}`}
+                        >
+                          <div className="accordion-body">
                             <div
                               key={index}
                               className="my-4 d-flex justify-content-between lh-sm "
@@ -245,16 +309,18 @@ export default function Form2(props) {
                                       className="input-group-text"
                                       id="basic-addon1"
                                     >
-                                      {props.t('Classes.3')}
+                                      {props.t("Classes.3")}
                                     </span>
                                     <input
                                       className="form-control"
                                       onChange={updateClassName}
                                       type="text"
                                       name={`${index}`}
-                                      placeholder={props.t('Classes.4')}
+                                      placeholder={props.t("Classes.4")}
                                       autoComplete="off"
-                                      value={note.classes.classes[index].className}
+                                      value={
+                                        note.classes.classes[index].className
+                                      }
                                     />
                                   </div>
                                 </div>
@@ -264,16 +330,19 @@ export default function Form2(props) {
                                       className="input-group-text"
                                       id="basic-addon1"
                                     >
-                                      {props.t('Classes.5')}
+                                      {props.t("Classes.5")}
                                     </span>
                                     <input
                                       className="form-control"
                                       onChange={updateClassLocation}
                                       type="text"
                                       name={`${index}`}
-                                      placeholder={props.t('Classes.6')}
+                                      placeholder={props.t("Classes.6")}
                                       autoComplete="off"
-                                      value={note.classes.classes[index].classLocation}
+                                      value={
+                                        note.classes.classes[index]
+                                          .classLocation
+                                      }
                                     />
                                   </div>
                                 </div>
@@ -286,7 +355,9 @@ export default function Form2(props) {
                                   updateTeachers(teachers, index)
                                 }
                                 t={props.t}
-                                teachers={note.classes.classes[index].staff.teachers}
+                                teachers={
+                                  note.classes.classes[index].staff.teachers
+                                }
                               />
                             </div>
                             <div className="my-4 d-flex justify-content-between lh-sm">
@@ -295,7 +366,9 @@ export default function Form2(props) {
                                   updateAssistants(assistants, index)
                                 }
                                 t={props.t}
-                                assistants={note.classes.classes[index].staff.assistants}
+                                assistants={
+                                  note.classes.classes[index].staff.assistants
+                                }
                               />
                             </div>
 
@@ -306,7 +379,7 @@ export default function Form2(props) {
                                     className="input-group-text  "
                                     id="basic-addon1"
                                   >
-                                    {props.t('Classes.13')}
+                                    {props.t("Classes.13")}
                                   </span>
                                 </div>
                                 <div className="col-12 ">
@@ -319,7 +392,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.14')}
+                                        {props.t("Classes.14")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -328,7 +401,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.15')}
+                                        {props.t("Classes.15")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -337,7 +410,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.16')}
+                                        {props.t("Classes.16")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -346,7 +419,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.17')}
+                                        {props.t("Classes.17")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -355,7 +428,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.18')}
+                                        {props.t("Classes.18")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -364,7 +437,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.19')}
+                                        {props.t("Classes.19")}
                                       </button>
                                       <button
                                         className="btn btn-sm col"
@@ -373,7 +446,7 @@ export default function Form2(props) {
                                         }}
                                         type="button"
                                       >
-                                        {props.t('Classes.20')}
+                                        {props.t("Classes.20")}
                                       </button>
                                     </div>
                                   </div>
@@ -385,7 +458,7 @@ export default function Form2(props) {
                               <div className="row">
                                 <div className="col col-12 col-sm-6 col-md-4 col-xl-3">
                                   <span className="input-group-text">
-                                    {props.t('Classes.21')}
+                                    {props.t("Classes.21")}
                                   </span>
                                 </div>
                                 <div className="col col-12 col-sm-6 col-md-8 col-xl-9">
@@ -393,7 +466,9 @@ export default function Form2(props) {
                                     <input
                                       type="text"
                                       name={`${index}`}
-                                      value={note.classes.classes[index].startOfDay}
+                                      value={
+                                        note.classes.classes[index].startOfDay
+                                      }
                                       onChange={updateStartOfWorkDay}
                                       placeholder="Start of work day"
                                       className="form-control"
@@ -401,7 +476,9 @@ export default function Form2(props) {
                                     <input
                                       type="text"
                                       name={`${index}`}
-                                      value={note.classes.classes[index].endOfDay}
+                                      value={
+                                        note.classes.classes[index].endOfDay
+                                      }
                                       onChange={updateEndOfWorkDay}
                                       placeholder="End of work day"
                                       className="form-control"
@@ -418,26 +495,30 @@ export default function Form2(props) {
                                   className="form-check-input"
                                   type="checkbox"
                                   value=""
-                                  id={"defaultCheck1" + `${index}`}
+                                  id={`defaultCheck1 ${index}`}
                                 />
                                 <label
                                   className="form-check-label"
-                                  for={"defaultCheck1" + `${index}`}
+                                  for={`defaultCheck1 ${index}`}
                                 >
                                   {note.classes.classes[index].className === ""
-                                    ? props.t('Classes.23')
-                                    : note.classes.classes[index].className}{" "}
-                                  {props.t('Classes.24')}
+                                    ? props.t("Classes.23")
+                                    : note.classes.classes[index]
+                                        .className}{" "}
+                                  {props.t("Classes.24")}
                                 </label>
                               </div>
                               <div className="row">
-                                {note.classes.classes[index].longDay.isLongDay && (
+                                {note.classes.classes[index].longDay
+                                  .isLongDay && (
                                   <LongDay
                                     updateLongDay={(longDayData) =>
                                       updateLongDay(longDayData, index)
                                     }
                                     t={props.t}
-                                    longDayDetails={note.classes.classes[index].longDay}
+                                    longDayDetails={
+                                      note.classes.classes[index].longDay
+                                    }
                                   />
                                 )}
                               </div>
@@ -457,7 +538,7 @@ export default function Form2(props) {
             onClick={addClass}
             value={note.classes.numberOfClasses}
           >
-            {props.t('Classes.25')}
+            {props.t("Classes.25")}
           </button>
         </div>
       </div>
@@ -466,11 +547,15 @@ export default function Form2(props) {
         <div className="card m-3">
           <div className="px-3 pt-3">
             <h5 className="">
-              {props.t('PaymentDetails.1')} <span className="text-danger">*</span>
+              {props.t("PaymentDetails.1")}{" "}
+              <span className="text-danger">*</span>
             </h5>
             <div className="row">
-                <PaymentSubForm updatePaymentSubform={updatePaymentData} t={props.t} paymentDetails={note.digitalPayment.details}/>
-             
+              <PaymentSubForm
+                updatePaymentSubform={updatePaymentData}
+                t={props.t}
+                paymentDetails={note.digitalPayment.details}
+              />
             </div>
           </div>
         </div>
@@ -478,9 +563,10 @@ export default function Form2(props) {
 
       <div className="mb-3 p-3">
         <button className="btn btn-primary" onClick={submit}>
-          Submit
+          {props.t("Form.2")}
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 }

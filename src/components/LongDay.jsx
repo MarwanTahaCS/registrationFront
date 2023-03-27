@@ -12,7 +12,7 @@ export default function LongDay(props) {
     setLongDayData((prevValue) => {
       return {
         ...prevValue,
-        ["staff"]: newTeachers,
+        staff: newTeachers,
       };
     });
     props.updateLongDay(longDayData);
@@ -24,7 +24,7 @@ export default function LongDay(props) {
     setLongDayData((prevValue) => {
       return {
         ...prevValue,
-        ["staff"]: newAssistants,
+        staff: newAssistants,
       };
     });
     props.updateLongDay(longDayData);

@@ -1,7 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import Assistants from "./Assistants";
-import Teachers from "./Teachers";
 
 export default function OrgDetails(props) {
   const [orgDetailsData, setOrgDetailsData] = useState(props.orgDetails);
@@ -14,7 +12,10 @@ export default function OrgDetails(props) {
         [name]: value,
       };
     });
-    props.updateOrgDetails(orgDetailsData);
+    props.updateOrgDetails({
+      ...orgDetailsData,
+      [name]: value,
+    });
   }
 
   function updateStaffData(event) {
@@ -25,10 +26,13 @@ export default function OrgDetails(props) {
     setOrgDetailsData((prevValue) => {
       return {
         ...prevValue,
-        ["staff"]: staff,
+        staff: staff,
       };
     });
-    props.updateOrgDetails(orgDetailsData);
+    props.updateOrgDetails({
+      ...orgDetailsData,
+      [name]: value,
+    });
   }
 
   const staffOptions = [
@@ -45,12 +49,12 @@ export default function OrgDetails(props) {
     setOrgDetailsData((prevValue) => {
       return {
         ...prevValue,
-        ["staff"]: newStaff,
+        staff: newStaff,
       };
     });
     props.updateOrgDetails({
       ...orgDetailsData,
-      ["staff"]: newStaff,
+      staff: newStaff,
     });
   }
 
@@ -64,12 +68,12 @@ export default function OrgDetails(props) {
     setOrgDetailsData((prevValue) => {
       return {
         ...prevValue,
-        ["staff"]: newStaff,
+        staff: newStaff,
       };
     });
     props.updateOrgDetails({
       ...orgDetailsData,
-      ["staff"]: newStaff,
+      staff: newStaff,
     });
   }
 
@@ -99,7 +103,7 @@ export default function OrgDetails(props) {
         </span>
         <input
           className="form-control"
-          onChange={updateOrgDetails}
+          onChange={(event) => updateOrgDetails(event)}
           type="text"
           name="orgLogo"
           placeholder={props.t('OrgDetails.15')}
@@ -114,55 +118,55 @@ export default function OrgDetails(props) {
       {orgDetailsData.staff.map((staffMember, index) => {
         return <ul className="conatiner py-0 px-3">
           <li key={index} className="d-flex justify-content-between lh-sm" >
-          <div key={index} className="input-group" dir="ltr">
-          <select className="input-group-text form-select" value={staffMember.position} name="position" id={index} onChange={updateStaffData}>
-            {staffOptions.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
-          <input
-            className="form-control bg-light"
-            onChange={updateStaffData}
-            type="text"
-            name="name"
-            placeholder={props.t('OrgDetails.9')}
-            autoComplete="off"
-            value={staffMember.name}
-            id={index}
-          />
-          <input
-            className="form-control bg-light"
-            onChange={updateStaffData}
-            type="text"
-            name="phoneNumber"
-            placeholder={props.t('OrgDetails.10')}
-            autoComplete="off"
-            value={staffMember.phoneNumber}
-            id={index}
-          />
-          <input
-            className="form-control bg-light"
-            onChange={updateStaffData}
-            type="email"
-            name="email"
-            placeholder={props.t('OrgDetails.11')}
-            autoComplete="off"
-            value={staffMember.email}
-            id={index}
-          />
-          </div>
-          <div className="px-1">
-            <i className="material-icons" onClick={() => remove(index)} style={{ color: "red", fontSize: "36px" }}>delete</i>
-          </div>
+            <div key={index} className="input-group" dir="ltr">
+              <select className="input-group-text form-select" value={staffMember.position} name="position" id={index} onChange={updateStaffData}>
+                {staffOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="form-control bg-light"
+                onChange={updateStaffData}
+                type="text"
+                name="name"
+                placeholder={props.t('OrgDetails.9')}
+                autoComplete="off"
+                value={staffMember.name}
+                id={index}
+              />
+              <input
+                className="form-control bg-light"
+                onChange={updateStaffData}
+                type="text"
+                name="phoneNumber"
+                placeholder={props.t('OrgDetails.10')}
+                autoComplete="off"
+                value={staffMember.phoneNumber}
+                id={index}
+              />
+              <input
+                className="form-control bg-light"
+                onChange={updateStaffData}
+                type="email"
+                name="email"
+                placeholder={props.t('OrgDetails.11')}
+                autoComplete="off"
+                value={staffMember.email}
+                id={index}
+              />
+            </div>
+            <div className="px-1">
+              <i className="material-icons" onClick={() => remove(index)} style={{ color: "red", fontSize: "36px" }}>delete</i>
+            </div>
           </li>
         </ul>
       })}
 
       <div className="px-3 pb-3">
         <button className="btn btn-primary btn-sm" onClick={() => addStaffMember()}>
-        {props.t('OrgDetails.12')}
+          {props.t('OrgDetails.12')}
         </button>
       </div>
 
