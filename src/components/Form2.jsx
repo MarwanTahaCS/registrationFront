@@ -152,6 +152,7 @@ export default function Form2(props) {
 
   function submit() {
     props.onsubmit(note);
+    console.log(note);
     toast.success(props.t("Form.1"), {
       position: "bottom-center",
       autoClose: 3000,
@@ -250,6 +251,7 @@ export default function Form2(props) {
       </div>
 
       <OrgDetails
+        phoneNumber={note.managerPhoneNumber}
         t={props.t}
         updateOrgDetails={(newOrgDetails) => {
           updateOrgDetails(newOrgDetails);

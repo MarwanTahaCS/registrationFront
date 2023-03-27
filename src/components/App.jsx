@@ -23,7 +23,7 @@ export default function App(props) {
 
   useEffect(() => {
     if(managerPhoneNumber!==""){
-      Axios.get("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/" + managerPhoneNumber)
+      Axios.get("http://167.172.179.91:3001/api/notes/" + managerPhoneNumber)
       .then((res) => {
         let response = res.data;
         setData(response);
@@ -37,9 +37,12 @@ export default function App(props) {
     }
   }, [managerPhoneNumber])
 
+  // http://localhost:3001/api/notes/
+  // https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/
+
   function saveData(note) {
     console.log("in save data class")
-    Axios.post("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/", note)
+    Axios.post("http://167.172.179.91:3001/api/notes/", note)
     .then((res) => {
       console.log(res);
     })
@@ -50,7 +53,7 @@ export default function App(props) {
 
   function updateData(note) {
     console.log("in update class")
-    Axios.post("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/update", note)
+    Axios.post("http://167.172.179.91:3001/api/notes/update", note)
     .then((res) => {
       console.log(res);
     })
@@ -85,6 +88,7 @@ export default function App(props) {
     orgDetails: {
       organizationName: "",
       orgLogo: "",
+      logoID: "",
       staff: [
         {
           position: "manager",
