@@ -23,7 +23,7 @@ export default function App(props) {
 
   useEffect(() => {
     if(managerPhoneNumber!==""){
-      Axios.get("http://localhost:3001/api/notes/" + managerPhoneNumber)
+      Axios.get("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/" + managerPhoneNumber)
       .then((res) => {
         let response = res.data;
         setData(response);
@@ -39,7 +39,7 @@ export default function App(props) {
 
   function saveData(note) {
     console.log("in save data class")
-    Axios.post("http://localhost:3001/api/notes", note)
+    Axios.post("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/", note)
     .then((res) => {
       console.log(res);
     })
@@ -50,7 +50,7 @@ export default function App(props) {
 
   function updateData(note) {
     console.log("in update class")
-    Axios.post("http://localhost:3001/api/notes/update", note)
+    Axios.post("https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/update", note)
     .then((res) => {
       console.log(res);
     })
