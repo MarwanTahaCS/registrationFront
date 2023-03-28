@@ -10,7 +10,7 @@ export default function OrgDetails(props) {
     data.append(`logo`, event.target.files[0]);
 
     axios
-      .post("http://localhost:3001/api/logoUpload", data, {
+      .post(localUrl, data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
