@@ -211,10 +211,10 @@ export default function Form2(props) {
     });
   };
 
-  function updateStartOfWorkDay(event) {
+  function updateStartOfWorkDay(event, index) {
     const { value, name } = event.target;
     let newClasses = note.classes;
-    newClasses.classes[name].startOfDay = value;
+    newClasses.classes[index].startOfDay = value;
     setNote((prevValue) => {
       return {
         ...prevValue,
@@ -222,10 +222,10 @@ export default function Form2(props) {
       };
     });
   }
-  function updateEndOfWorkDay(event) {
+  function updateEndOfWorkDay(event, index) {
     const { value, name } = event.target;
     let newClasses = note.classes;
-    newClasses.classes[name].endOfDay = value;
+    newClasses.classes[index].endOfDay = value;
     setNote((prevValue) => {
       return {
         ...prevValue,
@@ -490,7 +490,7 @@ return (
                                 <div className="d-flex ">
                                   <div className="row px-md-3">
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[0]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 0, index);
                                       }}
@@ -499,7 +499,7 @@ return (
                                       {props.t("Classes.14")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[1]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 1, index);
                                       }}
@@ -508,7 +508,7 @@ return (
                                       {props.t("Classes.15")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[2]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 2, index);
                                       }}
@@ -517,7 +517,7 @@ return (
                                       {props.t("Classes.16")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[3]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 3, index);
                                       }}
@@ -526,7 +526,7 @@ return (
                                       {props.t("Classes.17")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[4]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 4, index);
                                       }}
@@ -535,7 +535,7 @@ return (
                                       {props.t("Classes.18")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[5]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 5, index);
                                       }}
@@ -544,7 +544,7 @@ return (
                                       {props.t("Classes.19")}
                                     </button>
                                     <button
-                                      className="btn btn-sm col"
+                                      className={`btn btn-sm col ${note.classes.classes[index].workDays[6]? "btn-success text-white":""}`}
                                       onClick={(e) => {
                                         handleClick(e, 6, index);
                                       }}
@@ -573,7 +573,7 @@ return (
                                     value={
                                       note.classes.classes[index].startOfDay
                                     }
-                                    onChange={updateStartOfWorkDay}
+                                    onChange={(event)=>updateStartOfWorkDay(event, index)}
                                     placeholder="Start of work day"
                                     className="form-control"
                                   />
@@ -583,7 +583,7 @@ return (
                                     value={
                                       note.classes.classes[index].endOfDay
                                     }
-                                    onChange={updateEndOfWorkDay}
+                                    onChange={(event)=>updateEndOfWorkDay(event, index)}
                                     placeholder="End of work day"
                                     className="form-control"
                                   />
