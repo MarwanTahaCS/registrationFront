@@ -111,11 +111,6 @@ export default function OrgDetails(props) {
 
   return (
     <div className="card m-3">
-
-
-
-
-
       <div className="row">
         <div className="col col-12 col-sm-7 col-md-8 col-xl-9">
           <h5 className="p-3">

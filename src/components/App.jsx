@@ -23,7 +23,7 @@ export default function App(props) {
 
   useEffect(() => {
     if(managerPhoneNumber!==""){
-      Axios.get("https://myvarno.io/api/notes/" + managerPhoneNumber)
+      Axios.get("https://admin.myvarno.io/api/notes/" + managerPhoneNumber)
       .then((res) => {
         let response = res.data;
         setData(response);
@@ -42,7 +42,7 @@ export default function App(props) {
 
   function saveData(note) {
     console.log("in save data class")
-    Axios.post("https://myvarno.io/api/notes/", note)
+    Axios.post("https://admin.myvarno.io/api/notes/", note)
     .then((res) => {
       console.log(res);
     })
@@ -53,7 +53,7 @@ export default function App(props) {
 
   function updateData(note) {
     console.log("in update class")
-    Axios.post("https://myvarno.io/api/notes/update", note)
+    Axios.post("https://admin.myvarno.io/api/notes/update", note)
     .then((res) => {
       console.log(res);
     })

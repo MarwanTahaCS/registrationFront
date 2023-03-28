@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 import OrgDetails from "./OrgDetails";
 import Teachers from "./Teachers";
@@ -233,6 +238,12 @@ export default function Form2(props) {
     });
   }
 
+  function updateClassAgeGroup(event, index){
+    const value = event.target.value;
+
+    console.log(value, index);
+  }
+
   function remove(index) {
     let data = note.classes;
     data.classes.splice(index, 1);
@@ -367,32 +378,47 @@ export default function Form2(props) {
                               </div>
                             </div>
 
-                            <div className="my-4  justify-content-between lh-sm text-center">
-                              <div className="row">
+                            <div className="my-4  ">
+                              <FormControl>
+                                <FormLabel id="demo-radio-buttons-group-label">{props.t("Classes.26")}</FormLabel>
+                                <RadioGroup
+                                  aria-labelledby="demo-radio-buttons-group-label"
+                                  defaultValue="r1"
+                                  onChange={(event) => updateClassAgeGroup(event, index)}
+                                  name="radio-buttons-group"
+                                >
+                                  <FormControlLabel value="r1" control={<Radio />} label={`6-36 ${props.t("Classes.27")}`} />
+                                  <FormControlLabel value="r2" control={<Radio />} label={`3 ${props.t("Classes.28")}`} />
+                                  <FormControlLabel value="r3" control={<Radio />} label={`4 ${props.t("Classes.28")}`} />
+                                  <FormControlLabel value="r4" control={<Radio />} label={`5 ${props.t("Classes.28")}`} />
+                                  <FormControlLabel value="r5" control={<Radio />} label={props.t("Classes.29")} />
+                                </RadioGroup>
+                              </FormControl>
+                              {/* <div className="row">
                                 <div className="col col-12 col-sm-6 col-md-4 col-xl-3">
-                                  <span className="input-group-text">
-                                    {props.t("Classes.21")}
-                                  </span>
+                                  <p className="input-group-text">
+                                    {props.t("Classes.26")}
+                                  </p>
                                 </div>
                                 <div className="col col-12 col-sm-6 col-md-8 col-xl-9">
-                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
-                                    <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+                                  <div class="btn-group-vertical " role="group" aria-label="Basic radio toggle button group" dir="ltr">
+                                    <input type="radio" class="btn-check" name="btnradio" id="r1" autocomplete="off" />
+                                    <label class="btn btn-outline-secondary" for="r1">{`6-36 ${props.t("Classes.27")}`}</label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+                                    <input type="radio" class="btn-check" name="btnradio" id="r2" autocomplete="off" />
+                                    <label class="btn btn-outline-secondary" for="r2">{`3 ${props.t("Classes.28")}`}</label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+                                    <input type="radio" class="btn-check" name="btnradio" id="r3" autocomplete="off" />
+                                    <label class="btn btn-outline-secondary" for="r3">{`4 ${props.t("Classes.28")}`}</label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+                                    <input type="radio" class="btn-check" name="btnradio" id="r4" autocomplete="off" />
+                                    <label class="btn btn-outline-secondary" for="r4">{`5 ${props.t("Classes.28")}`}</label>
 
-                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
-                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+                                    <input type="radio" class="btn-check" name="btnradio" id="r5" autocomplete="off" />
+                                    <label class="btn btn-outline-secondary" for="r5">{props.t("Classes.29")}</label>
                                   </div>
                                 </div>
-                              </div>
+                              </div> */}
                             </div>
 
                             <div className="my-4 d-flex justify-content-between lh-sm">
