@@ -1,7 +1,7 @@
 {
   "Reception": {
     "1": "Please enter your phone number below",
-    "2": "Please enter your Phone N. (as manager)",
+    "2": "Please enter your Phone No. (as manager)",
     "3": "Submit"
   },
   "Form": {
@@ -24,7 +24,7 @@
     "7": "Security Manager",
     "8": "Other",
     "9": "Full Name",
-    "10": "Phone N.",
+    "10": "Phone No.",
     "11": "Email",
     "12": "Add Staff Member",
     "13": "Staff",
@@ -42,7 +42,7 @@
     "6": "Enter class location",
     "7": "Teachers",
     "8": "Full Name",
-    "9": "Phone N.",
+    "9": "Phone No.",
     "10": "Add Teacher",
     "11": "Assistant",
     "12": "Add Assistant",
@@ -58,7 +58,11 @@
     "22": "Fill in extra work hours",
     "23": "This class",
     "24": "has long day hours",
-    "25": "Add Class"
+    "25": "Add Class",
+    "26": "Please identify the age group of the class:",
+    "27": "months",
+    "28": "years",
+    "29": "Special Ed."
   },
   "PaymentDetails": {
     "1": "Payment Details",

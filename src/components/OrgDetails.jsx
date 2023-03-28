@@ -10,7 +10,7 @@ export default function OrgDetails(props) {
     data.append(`logo`, event.target.files[0]);
 
     axios
-      .post("http://167.172.179.91:3001/api/logoUpload", data, {
+      .post("http://localhost:3001/api/logoUpload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
@@ -152,7 +152,7 @@ export default function OrgDetails(props) {
               <div className="p-3 ">
                 <img
                   className="img-thumbnail"
-                  src={`http://localhost:3001/api/logoUpload/${orgDetailsData.logoID}`}
+                  src={`https://myvarno.io/api/logoUpload/${orgDetailsData.logoID}`}
                 ></img>
               </div>
             )}

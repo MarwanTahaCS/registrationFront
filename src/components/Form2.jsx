@@ -162,7 +162,7 @@ export default function Form2(props) {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
+    });
     // console.log(note);
   }
 
@@ -233,6 +233,18 @@ export default function Form2(props) {
     });
   }
 
+  function remove(index) {
+    let data = note.classes;
+    data.classes.splice(index, 1);
+    // props.setNote();
+    setNote((prevValue) => {
+      return {
+        ...prevValue,
+        classes: data
+      };
+    });
+  }
+
   return (
     <div className="container py-3">
       <div className="card m-3">
@@ -266,7 +278,7 @@ export default function Form2(props) {
             {props.t("Classes.1")} <span className="text-danger">*</span>
           </h5>
           {note.numberOfClasses !== 0 &&
-            arrayRange(1, note.classes.numberOfClasses, 1).map(
+            arrayRange(1, note.classes.classes.length, 1).map(
               (currentValue, index) => {
                 return (
                   <ul className="list-group m-1 mx-0 px-0 my-4">
@@ -278,19 +290,23 @@ export default function Form2(props) {
                           dir="ltr"
                         >
                           <button
-                            className="accordion-button bg-light"
+                            className="accordion-button bg-light py-0 ps-0"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target={`#collapseOne${index}`}
                             aria-expanded="true"
                             aria-controls={`collapseOne${index}`}
                           >
-                            <h6>
+                            <div className=" p-0 m-0"><i className="material-icons py-3 px-2" onClick={() => remove(index)} style={{ color: "red", fontSize: "36px" }}>delete</i></div>
+                            <h6 className="p-3">
                               {note.classes.classes[index].className === ""
                                 ? `${props.t("Classes.2")} ${index + 1}`
                                 : note.classes.classes[index].className}
                             </h6>
+
+
                           </button>
+
                         </h2>
                         <div
                           id={`collapseOne${index}`}
@@ -346,6 +362,34 @@ export default function Form2(props) {
                                           .classLocation
                                       }
                                     />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="my-4  justify-content-between lh-sm text-center">
+                              <div className="row">
+                                <div className="col col-12 col-sm-6 col-md-4 col-xl-3">
+                                  <span className="input-group-text">
+                                    {props.t("Classes.21")}
+                                  </span>
+                                </div>
+                                <div className="col col-12 col-sm-6 col-md-8 col-xl-9">
+                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked />
+                                    <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+
+                                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
                                   </div>
                                 </div>
                               </div>
@@ -506,23 +550,23 @@ export default function Form2(props) {
                                   {note.classes.classes[index].className === ""
                                     ? props.t("Classes.23")
                                     : note.classes.classes[index]
-                                        .className}{" "}
+                                      .className}{" "}
                                   {props.t("Classes.24")}
                                 </label>
                               </div>
                               <div className="row">
                                 {note.classes.classes[index].longDay
                                   .isLongDay && (
-                                  <LongDay
-                                    updateLongDay={(longDayData) =>
-                                      updateLongDay(longDayData, index)
-                                    }
-                                    t={props.t}
-                                    longDayDetails={
-                                      note.classes.classes[index].longDay
-                                    }
-                                  />
-                                )}
+                                    <LongDay
+                                      updateLongDay={(longDayData) =>
+                                        updateLongDay(longDayData, index)
+                                      }
+                                      t={props.t}
+                                      longDayDetails={
+                                        note.classes.classes[index].longDay
+                                      }
+                                    />
+                                  )}
                               </div>
                             </div>
                           </div>
