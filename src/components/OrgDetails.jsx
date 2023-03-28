@@ -242,9 +242,10 @@ export default function OrgDetails(props) {
             className="form-check-input"
             type="checkbox"
             value=""
-            id="degitalPaymentServices"
+            id="flexCheckChecked"
+            defaultChecked={props.digitalPayment.iswanted}
           />
-          <label className="form-check-label" for="degitalPaymentServices">
+          <label className="form-check-label" for="flexCheckChecked">
             {props.t("OrgDetails.4")}
           </label>
         </div>

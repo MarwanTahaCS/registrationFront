@@ -312,6 +312,7 @@ return (
       }}
       orgDetails={note.orgDetails}
       digitalPaymentStatus={digitalPaymentStatus}
+      digitalPayment = {note.digitalPayment}
     />
 
     <div className="card m-3">
@@ -600,6 +601,7 @@ return (
                                 type="checkbox"
                                 value=""
                                 id={`defaultCheck1 ${index}`}
+                                defaultChecked={note.classes.classes[index].longDay.isLongDay}
                               />
                               <label
                                 className="form-check-label"

@@ -15,7 +15,10 @@ export default function LongDay(props) {
         staff: newTeachers,
       };
     });
-    props.updateLongDay(longDayData);
+    props.updateLongDay({
+      ...longDayData,
+      staff: newTeachers,
+    });
   }
 
   function updateAssistants(assistants) {
@@ -27,7 +30,10 @@ export default function LongDay(props) {
         staff: newAssistants,
       };
     });
-    props.updateLongDay(longDayData);
+    props.updateLongDay({
+      ...longDayData,
+      staff: newAssistants,
+    });
   }
 
   function updateLongWorkDayHours(event) {
@@ -38,7 +44,10 @@ export default function LongDay(props) {
         [name]: value,
       };
     });
-    props.updateLongDay(longDayData);
+    props.updateLongDay({
+      ...longDayData,
+      [name]: value,
+    });
   }
 
   return (
