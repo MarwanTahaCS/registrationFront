@@ -147,7 +147,7 @@ export default function OrgDetails(props) {
               <div className="p-3 ">
                 <img
                   className="img-thumbnail"
-                  src={`https://myvarno.io/api/logoUpload/${orgDetailsData.logoID}`}
+                  src={`https://admin.myvarno.io/api/logoUpload/${orgDetailsData.logoID}`}
                 ></img>
               </div>
             )}
