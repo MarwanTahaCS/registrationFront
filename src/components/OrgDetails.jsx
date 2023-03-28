@@ -109,6 +109,9 @@ export default function OrgDetails(props) {
     });
   }
 
+  // const localUrl = "http://localhost:3001/api/logoUpload/";
+  const localUrl = "https://admin.myvarno.io/api/logoUpload/";
+
   return (
     <div className="card m-3">
       <div className="row">
@@ -147,7 +150,7 @@ export default function OrgDetails(props) {
               <div className="p-3 ">
                 <img
                   className="img-thumbnail"
-                  src={`https://admin.myvarno.io/api/logoUpload/${orgDetailsData.logoID}`}
+                  src={`${localUrl}${orgDetailsData.logoID}`}
                 ></img>
               </div>
             )}

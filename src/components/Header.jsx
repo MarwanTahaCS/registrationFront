@@ -9,7 +9,7 @@ export default function Header(props) {
 
   return (
     <header>
-      <div className="container mt-3 mb-0" dir="ltr">
+      <div className="container pt-2 mb-0" dir="ltr">
         <div className="card m-3">
           <div className="btn-group m-4" role="group" aria-label="Basic example">
           <button

@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from "./Header";
 import Axios from "axios";
 import Reception from "./Reception";
 import Form2 from "./Form2";
+import SentPage from "./SentPage";
 
 export default function App(props) {
 
@@ -22,44 +24,44 @@ export default function App(props) {
   const [exists, setExists] = useState(false);
 
   useEffect(() => {
-    if(managerPhoneNumber!==""){
-      Axios.get("https://admin.myvarno.io/api/notes/" + managerPhoneNumber)
-      .then((res) => {
-        let response = res.data;
-        setData(response);
-        if(response.length !== 0){
-          setExists(true);
-        } else{
-          setExists(false);
-        }
-      })
-      .catch((err) => console.log(err));
+    if (managerPhoneNumber !== "") {
+      Axios.get(localUrl + managerPhoneNumber)
+        .then((res) => {
+          let response = res.data;
+          setData(response);
+          if (response.length !== 0) {
+            setExists(true);
+          } else {
+            setExists(false);
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }, [managerPhoneNumber])
 
-  // http://localhost:3001/api/notes/
-  // https://clownfish-app-2-8zk4v.ondigitalocean.app/api/notes/
+  // const localUrl = "http://localhost:3001/api/notes/";
+  const localUrl = "https://admin.myvarno.io/api/notes/";
 
   function saveData(note) {
     console.log("in save data class")
-    Axios.post("https://admin.myvarno.io/api/notes/", note)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) =>
-      console.log(err)
-    );
+    Axios.post(localUrl, note)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) =>
+        console.log(err)
+      );
   }
 
   function updateData(note) {
     console.log("in update class")
-    Axios.post("https://admin.myvarno.io/api/notes/update", note)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) =>
-      console.log(err)
-    );
+    Axios.post(`${localUrl}update`, note)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) =>
+        console.log(err)
+      );
   }
 
   // function deleteData(id) {
@@ -137,6 +139,7 @@ export default function App(props) {
             }
           ],
         },
+        classAgeGroup: "6-36-months",
         workDays: [false, false, false, false, false, false, false],
         startOfDay: "08:00",
         endOfDay: "13:30",
@@ -159,13 +162,13 @@ export default function App(props) {
     },
   };
 
-  function getDefaultOrg(){
+  function getDefaultOrg() {
     let defaultOrg = organization;
     defaultOrg.managerPhoneNumber = managerPhoneNumber;
     return defaultOrg;
   }
 
-  function getNewManagerPhoneNumber(newPhoneNumber){
+  function getNewManagerPhoneNumber(newPhoneNumber) {
     setManagerPhoneNumber(newPhoneNumber);
   }
 
@@ -173,11 +176,20 @@ export default function App(props) {
     <div className="bg-light">
       <Header switchLanguage={handleClick} />
 
-      {managerPhoneNumber === "" && (<Reception setManagerPhoneNumber={(newNumber) => getNewManagerPhoneNumber(newNumber)} t={t} />)}
-
-      {/* <Form onsubmit={saveData} /> */}
-      {data !== null && (<Form2 t={t} onsubmit={(!exists) ?saveData:updateData} org={(!exists) ? getDefaultOrg():data[0]} />)}
       
+
+      
+
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<div>
+        {managerPhoneNumber === "" && (<Reception setManagerPhoneNumber={(newNumber) => getNewManagerPhoneNumber(newNumber)} t={t} />)}
+        {data !== null && (<Form2 t={t} onsubmit={(!exists) ? saveData : updateData} org={(!exists) ? getDefaultOrg() : data[0]} />)}
+      </div>} />
+          <Route path="/success" element={<SentPage t={t} />} />
+        </Routes>
+      </Router>
+
       {/* {data.map((item, index) => {
         return (
           <Note

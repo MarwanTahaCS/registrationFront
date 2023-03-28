@@ -6,13 +6,15 @@
   },
   "Form": {
     "1": "Saved successfully!",
-    "2": "Save Changes"
+    "2": "Save Changes",
+    "3": "Submit"
   },
   "Intro": {
     "1": "Registration Form",
     "2": "Please fill in you organization's information below so we can start preparing your workspace at Varno.",
     "3": "Required",
-    "4": "Make sure to press \"Save Changes\" before leaving this page."
+    "4": "Make sure to press \"Save Changes\" before leaving this page.",
+    "5": "Once all your organization's details are filled in, press on \"Submit\" to send us this form as regesteration to Varno."
   },
   "OrgDetails": {
     "1": "Organization Details",
@@ -72,5 +74,9 @@
     "5": "Please enter the organization's bank branch number",
     "6": "Bank Name",
     "7": "Please enter the organization's Bank Name"
+  },
+  "Success": {
+    "1": "Your details have been sent to Varno successfully!",
+    "2": "Thank you for your cooperation"
   }
 }
